@@ -36,3 +36,21 @@ application {
     // Define the main class for the application.
     mainClassName = "sbaier.datanet.AppKt"
 }
+
+tasks.register("default")
+{
+    description="The default gradle task. Cleans, tests, builds and runs project."
+
+    dependsOn("clean")
+    dependsOn("test")
+    dependsOn("build")
+    dependsOn("run")
+
+    doLast()
+    {
+
+        println("Cleaned, tested, built and ran project.")
+    }
+}
+
+defaultTasks("default")
