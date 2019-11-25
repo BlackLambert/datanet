@@ -19,7 +19,7 @@ class NodeDataExtractorTest
     }
 
     @Test
-    fun dataIDAndNodeIDAreIdentical()
+    fun extract_DataIDAndNodeIDAreIdentical()
     {
         var data = extractor.extract()
         assertSame(data.iD, firstNode.iD, "Both the data id and the node id have to be identical" +
