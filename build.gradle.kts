@@ -41,7 +41,7 @@ tasks.register("default")
 {
     description="The default gradle task. Cleans, tests, builds and runs project."
 
-    dependsOn("clean")
+    //dependsOn("clean")
     dependsOn("test")
     dependsOn("build")
     dependsOn("run")
