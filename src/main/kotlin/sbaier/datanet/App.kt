@@ -3,13 +3,23 @@
  */
 package sbaier.datanet
 
+import sbaier.datanet.core.Node
+import java.util.UUID
+
 class App {
     val greeting: String
         get() {
             return "Hello world."
         }
+    val node: Node
+        get()
+        {
+            return Node(UUID.randomUUID())
+        }
 }
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    val app = App()
+    println(app.greeting)
+    println(app.node.iD)
 }
