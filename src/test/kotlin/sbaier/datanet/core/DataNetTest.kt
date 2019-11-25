@@ -34,7 +34,8 @@ class DataNetTest
     fun add_NetContainsAddedNode()
     {
         net.add(additionalNode)
-        assertTrue(net.contains(additionalNode), "Data Net does not contain the previously added node.")
+        assertTrue(net.contains(additionalNode))
+        assertTrue(net.nodeCount == 4)
     }
 
     @Test
@@ -58,6 +59,7 @@ class DataNetTest
         net.remove(nodes[0])
         assertTrue(net.contains(nodes[1]))
         assertTrue(net.contains(nodes[2]))
+        assertTrue(net.nodeCount == 2)
     }
 
     @Test
