@@ -10,6 +10,8 @@ class BasicTagNodeFactory() : TagNodeFactory()
         _defaultTagName = defaultTagName
     }
 
+    //Todo UUID Generierung kapseln
+    //Todo add create function with stringified iD Input
     override fun create(name: String): TagNode {
         return TagNode(name, UUID.randomUUID())
     }
