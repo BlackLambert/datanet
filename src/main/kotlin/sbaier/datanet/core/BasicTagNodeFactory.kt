@@ -3,11 +3,11 @@ package sbaier.datanet.core
 import sbaier.identification.UUIDGenerator
 import java.util.*
 
-class BasicTagNodeFactory(private val iDGenerator: UUIDGenerator) : TagNodeFactory()
+class BasicTagNodeFactory(private val _iDGenerator: UUIDGenerator) : TagNodeFactory()
 {
     private var _defaultTagName = "TagName"
 
-    constructor(defaultTagName: String) : this() {
+    constructor(defaultTagName: String, iDGenerator: UUIDGenerator) : this(iDGenerator) {
         _defaultTagName = defaultTagName
     }
 
@@ -16,7 +16,7 @@ class BasicTagNodeFactory(private val iDGenerator: UUIDGenerator) : TagNodeFacto
     }
 
     override fun create(): TagNode {
-        val iD = iDGenerator.create()
+        val iD = _iDGenerator.create()
         return TagNode("${_defaultTagName}_${iD.toString()}", iD)
     }
 
