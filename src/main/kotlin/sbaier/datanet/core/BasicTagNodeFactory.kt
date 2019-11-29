@@ -1,7 +1,6 @@
 package sbaier.datanet.core
 
 import sbaier.identification.UUIDGenerator
-import java.util.*
 
 class BasicTagNodeFactory(private val _iDGenerator: UUIDGenerator) : TagNodeFactory()
 {
@@ -12,7 +11,8 @@ class BasicTagNodeFactory(private val _iDGenerator: UUIDGenerator) : TagNodeFact
     }
 
     override fun create(name: String): TagNode {
-        return TagNode(name, UUID.randomUUID())
+        val iD = _iDGenerator.create()
+        return TagNode(name, iD)
     }
 
     override fun create(): TagNode {
