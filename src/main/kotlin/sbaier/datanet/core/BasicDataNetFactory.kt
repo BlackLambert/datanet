@@ -1,11 +1,9 @@
 package sbaier.datanet.core
 
-import java.util.*
+import sbaier.identification.UUIDGenerator
 
-class BasicDataNetFactory : DataNetFactory()
+class BasicDataNetFactory(private val iDGenerator: UUIDGenerator) : DataNetFactory()
 {
-    //Todo UUID Generierung kapseln
-    //Todo add create function with stringified iD Input
     override fun create(nodes: Collection<Node>): DataNet
     {
         var net = create()
@@ -13,7 +11,9 @@ class BasicDataNetFactory : DataNetFactory()
         return net
     }
 
-    override fun create(): DataNet {
-        return DataNet(UUID.randomUUID())
+    override fun create(): DataNet
+    {
+        val iD = iDGenerator.create()
+        return DataNet(iD)
     }
 }

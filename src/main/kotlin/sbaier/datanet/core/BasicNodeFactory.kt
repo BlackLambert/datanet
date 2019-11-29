@@ -1,12 +1,13 @@
 package sbaier.datanet.core
 
+import sbaier.identification.UUIDGenerator
 import java.util.*
 
-class BasicNodeFactory() : NodeFactory() {
-    //Todo UUID Generierung kapseln
-    //Todo add create function with stringified iD Input
-    override fun create(): Node {
-        val iD: UUID = UUID.randomUUID()
+class BasicNodeFactory(private val iDGenerator: UUIDGenerator) : NodeFactory()
+{
+    override fun create(): Node
+    {
+        val iD: UUID = iDGenerator.create()
         return Node(iD)
     }
 }
