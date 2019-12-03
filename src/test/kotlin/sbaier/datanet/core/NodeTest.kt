@@ -15,8 +15,8 @@ class NodeTest
     fun setup()
     {
         val componentFactory = DummyNodeComponentFactory()
-        _firstComponent = componentFactory.create(NodeComponentType.Name)
-        _componentOfSameType = componentFactory.create(NodeComponentType.Name)
+        _firstComponent = componentFactory.create(createNameComponentConstructArgs())
+        _componentOfSameType = componentFactory.create(createNameComponentConstructArgs())
         val nodeFactory = DummyNodeFactory()
         _node = nodeFactory.create()
     }
@@ -100,5 +100,10 @@ class NodeTest
         _node.add(_firstComponent)
         _node.remove(_firstComponent)
         assertTrue(_node.get(_firstComponent.type).isEmpty())
+    }
+
+    private fun createNameComponentConstructArgs(): NameComponentConstructArgs
+    {
+        return NameComponentConstructArgs("Prop", "Name")
     }
 }

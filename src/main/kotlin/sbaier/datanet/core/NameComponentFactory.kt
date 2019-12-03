@@ -4,5 +4,5 @@ import java.util.*
 
 abstract class NameComponentFactory
 {
-    abstract fun create(iD: UUID): NameComponent
+    abstract fun create(iD: UUID, constructArgs: NameComponentConstructArgs): NameComponent
 }

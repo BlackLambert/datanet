@@ -10,6 +10,8 @@ import kotlin.test.assertFailsWith
 class BasicNodeComponentFactoryTest
 {
     private lateinit var _nodeComponentFactory: NodeComponentFactory
+    private lateinit var _nameConstructArgs: NodeComponentConstructArgs
+    private lateinit var _unsetConstructArgs: UnsetComponentConstructArgs
 
     @BeforeTest
     fun setup()
@@ -17,18 +19,20 @@ class BasicNodeComponentFactoryTest
         val iDGenerator = UUIDGenerator()
         val nameComponentFactory = DummyNameComponentFactory()
         _nodeComponentFactory = BasicNodeComponentFactory(iDGenerator, nameComponentFactory)
+        _nameConstructArgs = NameComponentConstructArgs("PropName", "DefaultName")
+        _unsetConstructArgs = UnsetComponentConstructArgs()
     }
 
     @Test
     fun create_OutputTypeEqualsInputType()
     {
-        val output = _nodeComponentFactory.create(NodeComponentType.Name)
+        val output = _nodeComponentFactory.create(_nameConstructArgs)
         assertEquals(output.type, NodeComponentType.Name)
     }
 
     @Test
     fun create_DefaultTypeThrowsException()
     {
-        assertFailsWith<IllegalArgumentException>{_nodeComponentFactory.create(NodeComponentType.Unset)}
+        assertFailsWith<IllegalArgumentException>{_nodeComponentFactory.create(_unsetConstructArgs)}
     }
 }

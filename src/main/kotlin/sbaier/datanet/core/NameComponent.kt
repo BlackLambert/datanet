@@ -2,7 +2,10 @@ package sbaier.datanet.core
 
 import java.util.*
 
-class NameComponent(iD: UUID, type: NodeComponentType, initialValue: String) : NodeComponent(iD, type)
+class NameComponent(iD: UUID,
+                    type: NodeComponentType,
+                    initialName: String,
+                    val namePropertyName: String) : NodeComponent(iD, type)
 {
-    var value: String = initialValue
+    var nameValue: String = initialName
 }

@@ -4,10 +4,8 @@ import java.util.*
 
 class BasicNameComponentFactory : NameComponentFactory()
 {
-    private val _defaultName = "Node (%s)"
-
-    override fun create(iD: UUID): NameComponent
+    override fun create(iD: UUID, constructArgs: NameComponentConstructArgs): NameComponent
     {
-        return NameComponent(iD, NodeComponentType.Name, _defaultName.format(iD.toString()))
+        return NameComponent(iD, NodeComponentType.Name, constructArgs.defaultName, constructArgs.namePropertyName)
     }
 }
