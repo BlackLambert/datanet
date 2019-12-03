@@ -15,7 +15,7 @@ class BasicDataNetFactoryTest
     fun setup()
     {
         val iDGenerator = UUIDGenerator()
-        var nodeFactory = DummyNodeFactory(iDGenerator)
+        var nodeFactory = DummyNodeFactory()
         nodes = listOf(nodeFactory.create(), nodeFactory.create(), nodeFactory.create())
         factory = BasicDataNetFactory(iDGenerator)
     }

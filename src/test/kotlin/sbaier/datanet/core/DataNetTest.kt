@@ -12,10 +12,9 @@ class DataNetTest
     @BeforeTest
     fun setup()
     {
-        val iDGenerator = UUIDGenerator()
-        val nodeFactory = DummyNodeFactory(iDGenerator)
+        val nodeFactory = DummyNodeFactory()
         nodes = listOf(nodeFactory.create(), nodeFactory.create(), nodeFactory.create())
-        val netFactory = DummyDataNetFactory(iDGenerator)
+        val netFactory = DummyDataNetFactory()
         net = netFactory.create(nodes)
         additionalNode = nodeFactory.create()
     }

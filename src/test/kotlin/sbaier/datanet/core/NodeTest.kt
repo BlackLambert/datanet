@@ -2,7 +2,6 @@ package sbaier.datanet.core
 
 import sbaier.eventhandling.CollectionChangeType
 import sbaier.eventhandling.CollectionChangedEventArgs
-import sbaier.identification.UUIDGenerator
 import java.lang.IllegalArgumentException
 import kotlin.test.*
 
@@ -15,11 +14,10 @@ class NodeTest
     @BeforeTest
     fun setup()
     {
-        val iDGenerator = UUIDGenerator()
-        val componentFactory = DummyNodeComponentFactory(iDGenerator)
+        val componentFactory = DummyNodeComponentFactory()
         _firstComponent = componentFactory.create(NodeComponentType.Name)
         _componentOfSameType = componentFactory.create(NodeComponentType.Name)
-        val nodeFactory = DummyNodeFactory(iDGenerator)
+        val nodeFactory = DummyNodeFactory()
         _node = nodeFactory.create()
     }
 
