@@ -1,7 +1,19 @@
 package sbaier.datanet.core
 
-abstract class DataNetFactory
+import sbaier.identification.UUIDGenerator
+
+class DataNetFactory(private val _iDGenerator: UUIDGenerator)
 {
-    abstract fun create(nodes: Collection<Node>): DataNet
-    abstract fun create(): DataNet
+    fun create(nodes: Collection<Node>): DataNet
+    {
+        var net = create()
+        nodes.forEach {net.add(it)}
+        return net
+    }
+
+    fun create(): DataNet
+    {
+        val iD = _iDGenerator.create()
+        return DataNet(iD)
+    }
 }

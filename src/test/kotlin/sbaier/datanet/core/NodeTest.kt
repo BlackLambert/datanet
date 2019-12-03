@@ -3,6 +3,7 @@ package sbaier.datanet.core
 import sbaier.eventhandling.CollectionChangeType
 import sbaier.eventhandling.CollectionChangedEventArgs
 import java.lang.IllegalArgumentException
+import java.util.*
 import kotlin.test.*
 
 class NodeTest
@@ -14,11 +15,9 @@ class NodeTest
     @BeforeTest
     fun setup()
     {
-        val componentFactory = DummyNodeComponentFactory()
-        _firstComponent = componentFactory.create(createNameComponentConstructArgs())
-        _componentOfSameType = componentFactory.create(createNameComponentConstructArgs())
-        val nodeFactory = DummyNodeFactory()
-        _node = nodeFactory.create()
+        _firstComponent = createNameComponent()
+        _componentOfSameType = createNameComponent()
+        _node = createNode()
     }
 
     @Test
@@ -102,8 +101,13 @@ class NodeTest
         assertTrue(_node.get(_firstComponent.type).isEmpty())
     }
 
-    private fun createNameComponentConstructArgs(): NameComponentConstructArgs
+    private fun createNameComponent(): NameComponent
     {
-        return NameComponentConstructArgs("Prop", "Name")
+        return NameComponent(UUID.randomUUID(),"Prop", "Name")
+    }
+
+    private fun createNode():Node
+    {
+        return Node(UUID.randomUUID())
     }
 }

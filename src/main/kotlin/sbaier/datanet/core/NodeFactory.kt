@@ -1,6 +1,13 @@
 package sbaier.datanet.core
 
-abstract class NodeFactory
+import sbaier.identification.UUIDGenerator
+import java.util.*
+
+class NodeFactory(private val iDGenerator: UUIDGenerator)
 {
-    public abstract fun create(): Node
+    fun create(): Node
+    {
+        val iD: UUID = iDGenerator.create()
+        return Node(iD)
+    }
 }

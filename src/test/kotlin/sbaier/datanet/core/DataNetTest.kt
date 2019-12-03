@@ -1,6 +1,7 @@
 package sbaier.datanet.core
 
 import sbaier.identification.UUIDGenerator
+import java.util.*
 import kotlin.test.*
 
 class DataNetTest
@@ -12,11 +13,10 @@ class DataNetTest
     @BeforeTest
     fun setup()
     {
-        val nodeFactory = DummyNodeFactory()
-        nodes = listOf(nodeFactory.create(), nodeFactory.create(), nodeFactory.create())
-        val netFactory = DummyDataNetFactory()
-        net = netFactory.create(nodes)
-        additionalNode = nodeFactory.create()
+        nodes = listOf(createNote(), createNote(), createNote())
+        net = createNet()
+        nodes.forEach{net.add(it)}
+        additionalNode = createNote()
     }
 
     @Test
@@ -84,5 +84,15 @@ class DataNetTest
         assertFailsWith<IllegalArgumentException>("Getting a note that has not been added from a data net " +
                 "is not allowed")
         {net.get(additionalNode.iD)}
+    }
+
+    private fun createNote(): Node
+    {
+        return Node(UUID.randomUUID())
+    }
+
+    private fun createNet():DataNet
+    {
+        return DataNet(UUID.randomUUID())
     }
 }

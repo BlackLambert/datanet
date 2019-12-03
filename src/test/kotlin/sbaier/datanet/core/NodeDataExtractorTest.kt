@@ -1,6 +1,7 @@
 package sbaier.datanet.core
 
 import sbaier.identification.UUIDGenerator
+import java.util.*
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertSame
@@ -14,8 +15,7 @@ class NodeDataExtractorTest
     @BeforeTest
     fun setup()
     {
-        val iDGenerator = UUIDGenerator()
-        firstNode = Node(iDGenerator.create())
+        firstNode = Node(UUID.randomUUID())
         extractor = NodeDataExtractor(firstNode)
     }
 

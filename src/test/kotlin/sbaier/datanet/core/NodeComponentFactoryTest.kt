@@ -7,8 +7,10 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-class BasicNodeComponentFactoryTest
+class NodeComponentFactoryTest
 {
+    private val _namePropertyName = "Prop"
+    private val _nameValue = "Name"
     private lateinit var _nodeComponentFactory: NodeComponentFactory
     private lateinit var _nameConstructArgs: NodeComponentConstructArgs
     private lateinit var _unsetConstructArgs: UnsetComponentConstructArgs
@@ -17,17 +19,19 @@ class BasicNodeComponentFactoryTest
     fun setup()
     {
         val iDGenerator = UUIDGenerator()
-        val nameComponentFactory = DummyNameComponentFactory()
-        _nodeComponentFactory = BasicNodeComponentFactory(iDGenerator, nameComponentFactory)
-        _nameConstructArgs = NameComponentConstructArgs("PropName", "DefaultName")
+        val nameComponentFactory = NameComponentFactory()
+        _nodeComponentFactory = NodeComponentFactory(iDGenerator, nameComponentFactory)
+        _nameConstructArgs = NameComponentConstructArgs(_namePropertyName, _nameValue)
         _unsetConstructArgs = UnsetComponentConstructArgs()
     }
 
     @Test
-    fun create_OutputTypeEqualsInputType()
+    fun create_OutputEqualsInput()
     {
-        val output = _nodeComponentFactory.create(_nameConstructArgs)
+        val output:NameComponent = _nodeComponentFactory.create(_nameConstructArgs) as NameComponent
         assertEquals(output.type, NodeComponentType.Name)
+        assertEquals(output.nameValue, _nameValue)
+        assertEquals(output.namePropertyName, _namePropertyName)
     }
 
     @Test

@@ -1,15 +1,17 @@
 package sbaier.datanet.core
 
+import sbaier.identification.UUIDGenerator
 import java.lang.IllegalArgumentException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-class BasicNodeFactoryByPresetTest
+class NodeFactoryByPresetTest
 {
     private val _namePropertyName = "PropName"
     private val _nameValue = "Name"
+    private val _presetName = "Preset"
     private lateinit var _validPreset: NodePreset
     private lateinit var _missingArgsPreset: NodePreset
     private lateinit var _invalidArgsPreset: NodePreset
@@ -18,14 +20,36 @@ class BasicNodeFactoryByPresetTest
     @BeforeTest
     fun setup()
     {
+        _validPreset = createValidNodePreset()
+        _missingArgsPreset = createMissingArgsNodePreset()
+        _invalidArgsPreset = createInvalidArgsNodePreset()
+        _nodeFactory = createNodeFactoryByPreset()
+    }
+
+    private fun createNodeFactoryByPreset(): NodeFactoryByPreset
+    {
+        val iDGenerator = UUIDGenerator()
+        val nodeFactory = NodeFactory(iDGenerator)
+        val nameComponentFactory = NameComponentFactory()
+        val nodeComponentFactory = NodeComponentFactory(iDGenerator, nameComponentFactory)
+        return NodeFactoryByPreset(nodeFactory, nodeComponentFactory)
+    }
+
+    private fun createValidNodePreset(): NodePreset
+    {
         val validArgs: NodeComponentConstructArgs = NameComponentConstructArgs(_namePropertyName, _nameValue)
-        _validPreset = NodePreset(listOf(NodeComponentType.Name), hashMapOf(NodeComponentType.Name to validArgs))
-        _missingArgsPreset = NodePreset(listOf(NodeComponentType.Name), hashMapOf())
+        return NodePreset(_presetName, listOf(NodeComponentType.Name), hashMapOf(NodeComponentType.Name to validArgs))
+    }
+
+    private fun createMissingArgsNodePreset(): NodePreset
+    {
+        return NodePreset(_presetName, listOf(NodeComponentType.Name), hashMapOf())
+    }
+
+    private fun createInvalidArgsNodePreset(): NodePreset
+    {
         val invalidArgs: NodeComponentConstructArgs = UnsetComponentConstructArgs()
-        _invalidArgsPreset = NodePreset(listOf(NodeComponentType.Name), hashMapOf(NodeComponentType.Name to invalidArgs))
-        val nodeFactory = DummyNodeFactory()
-        val nodeComponentFactory = DummyNodeComponentFactory()
-        _nodeFactory = BasicNodeFactoryByPreset(nodeFactory, nodeComponentFactory)
+        return NodePreset(_presetName, listOf(NodeComponentType.Name), hashMapOf(NodeComponentType.Name to invalidArgs))
     }
 
     @Test

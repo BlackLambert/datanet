@@ -2,7 +2,10 @@ package sbaier.datanet.core
 
 import java.util.*
 
-abstract class NameComponentFactory
+class NameComponentFactory
 {
-    abstract fun create(iD: UUID, constructArgs: NameComponentConstructArgs): NameComponent
+    fun create(iD: UUID, constructArgs: NameComponentConstructArgs): NameComponent
+    {
+        return NameComponent(iD, constructArgs.defaultName, constructArgs.namePropertyName)
+    }
 }

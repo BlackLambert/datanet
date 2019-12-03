@@ -1,6 +1,23 @@
 package sbaier.datanet.core
 
-abstract class NodeFactoryByPreset
+class NodeFactoryByPreset(private val nodeFactory: NodeFactory,
+                          private val nodeComponentFactory: NodeComponentFactory)
 {
-    abstract fun create(preset: NodePreset): Node
+    fun create(preset: NodePreset): Node
+    {
+        val result = nodeFactory.create()
+        for (componentType in preset.componentTypes)
+        {
+            if (!preset.componentConstructArgs.containsKey(componentType))
+                throw IllegalArgumentException("Failed to create NodeComponent of type $componentType. " +
+                        "No Construction Arguments were provided.")
+            val componentArgs = preset.componentConstructArgs[componentType]
+            if (componentArgs?.type != componentType)
+                throw java.lang.IllegalArgumentException("Failed to create NodeComponent of type $componentType. " +
+                        "The type of the construction arguments mismatch the requested type")
+            val nodeComponent = nodeComponentFactory.create(componentArgs)
+            result.add(nodeComponent)
+        }
+        return result
+    }
 }

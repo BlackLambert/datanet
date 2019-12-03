@@ -5,7 +5,7 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertNotSame
 
-class BasicNodeFactoryTest
+class NodeFactoryTest
 {
     private lateinit var factory: NodeFactory
 
@@ -13,7 +13,7 @@ class BasicNodeFactoryTest
     fun setup()
     {
         val iDGenerator = UUIDGenerator()
-        factory = BasicNodeFactory(iDGenerator)
+        factory = NodeFactory(iDGenerator)
     }
 
     @Test
