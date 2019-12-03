@@ -1,4 +1,8 @@
 package sbaier.datanet.core
 
-class NodeComponent {
+import java.util.*
+
+abstract class NodeComponent(val iD:UUID, val type: NodeComponentType)
+{
+
 }

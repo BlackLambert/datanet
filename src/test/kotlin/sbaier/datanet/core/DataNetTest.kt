@@ -1,5 +1,6 @@
 package sbaier.datanet.core
 
+import sbaier.identification.UUIDGenerator
 import kotlin.test.*
 
 class DataNetTest
@@ -11,9 +12,10 @@ class DataNetTest
     @BeforeTest
     fun setup()
     {
-        val nodeFactory = DummyNodeFactory()
+        val iDGenerator = UUIDGenerator()
+        val nodeFactory = DummyNodeFactory(iDGenerator)
         nodes = listOf(nodeFactory.create(), nodeFactory.create(), nodeFactory.create())
-        val netFactory = DummyDataNetFactory()
+        val netFactory = DummyDataNetFactory(iDGenerator)
         net = netFactory.create(nodes)
         additionalNode = nodeFactory.create()
     }

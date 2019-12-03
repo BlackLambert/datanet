@@ -1,4 +1,7 @@
 package sbaier.datanet.core
 
-enum class NodeComponentType {
+enum class NodeComponentType
+{
+    Unset,
+    Name
 }

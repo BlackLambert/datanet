@@ -1,4 +1,8 @@
 package sbaier.datanet.core
 
-class NodeComponentFactory {
+import sbaier.identification.UUIDGenerator
+
+abstract class NodeComponentFactory()
+{
+    abstract fun create(type: NodeComponentType): NodeComponent
 }

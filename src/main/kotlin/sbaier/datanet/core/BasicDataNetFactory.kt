@@ -2,7 +2,7 @@ package sbaier.datanet.core
 
 import sbaier.identification.UUIDGenerator
 
-class BasicDataNetFactory(private val iDGenerator: UUIDGenerator) : DataNetFactory()
+class BasicDataNetFactory(private val _iDGenerator: UUIDGenerator) : DataNetFactory()
 {
     override fun create(nodes: Collection<Node>): DataNet
     {
@@ -13,7 +13,7 @@ class BasicDataNetFactory(private val iDGenerator: UUIDGenerator) : DataNetFacto
 
     override fun create(): DataNet
     {
-        val iD = iDGenerator.create()
+        val iD = _iDGenerator.create()
         return DataNet(iD)
     }
 }

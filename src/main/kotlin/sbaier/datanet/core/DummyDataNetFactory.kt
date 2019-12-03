@@ -1,8 +1,8 @@
 package sbaier.datanet.core
 
-import java.util.*
+import sbaier.identification.UUIDGenerator
 
-class DummyDataNetFactory: DataNetFactory()
+class DummyDataNetFactory(private val _iDGenerator: UUIDGenerator): DataNetFactory()
 {
     override fun create(nodes: Collection<Node>): DataNet
     {
@@ -13,6 +13,6 @@ class DummyDataNetFactory: DataNetFactory()
 
     override fun create(): DataNet
     {
-        return DataNet(UUID.randomUUID())
+        return DataNet(_iDGenerator.create())
     }
 }

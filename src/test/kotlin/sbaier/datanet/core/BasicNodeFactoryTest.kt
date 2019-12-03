@@ -1,5 +1,6 @@
 package sbaier.datanet.core
 
+import sbaier.identification.UUIDGenerator
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertNotSame
@@ -11,7 +12,8 @@ class BasicNodeFactoryTest
     @BeforeTest
     fun setup()
     {
-        factory = BasicNodeFactory()
+        val iDGenerator = UUIDGenerator()
+        factory = BasicNodeFactory(iDGenerator)
     }
 
     @Test
