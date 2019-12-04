@@ -1,5 +1,6 @@
-package sbaier.datanet.core.node
+package sbaier.datanet.core.net
 
+import sbaier.datanet.core.node.Node
 import sbaier.identification.UUIDGenerator
 
 class DataNetFactory(private val _iDGenerator: UUIDGenerator)

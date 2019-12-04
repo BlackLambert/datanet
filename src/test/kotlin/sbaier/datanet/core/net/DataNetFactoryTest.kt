@@ -1,6 +1,5 @@
-package sbaier.datanet.core.node
+package sbaier.datanet.core.net
 
-import sbaier.datanet.core.node.DataNetFactory
 import sbaier.datanet.core.node.Node
 import sbaier.identification.UUIDGenerator
 import java.util.*
