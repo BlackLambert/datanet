@@ -3,7 +3,7 @@
  */
 package sbaier.datanet
 
-import sbaier.datanet.core.Node
+import sbaier.datanet.core.node.Node
 import java.util.UUID
 
 class App {
