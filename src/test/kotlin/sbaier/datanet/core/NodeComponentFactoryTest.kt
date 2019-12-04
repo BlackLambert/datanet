@@ -18,9 +18,7 @@ class NodeComponentFactoryTest
     @BeforeTest
     fun setup()
     {
-        val iDGenerator = UUIDGenerator()
-        val nameComponentFactory = NameComponentFactory()
-        _nodeComponentFactory = NodeComponentFactory(iDGenerator, nameComponentFactory)
+        _nodeComponentFactory = NodeComponentFactoryAssembler().assemble()
         _nameConstructArgs = NameComponentConstructArgs(_namePropertyName, _nameValue)
         _unsetConstructArgs = UnsetComponentConstructArgs()
     }

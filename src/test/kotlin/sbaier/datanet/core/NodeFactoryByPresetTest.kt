@@ -23,16 +23,7 @@ class NodeFactoryByPresetTest
         _validPreset = createValidNodePreset()
         _missingArgsPreset = createMissingArgsNodePreset()
         _invalidArgsPreset = createInvalidArgsNodePreset()
-        _nodeFactory = createNodeFactoryByPreset()
-    }
-
-    private fun createNodeFactoryByPreset(): NodeFactoryByPreset
-    {
-        val iDGenerator = UUIDGenerator()
-        val nodeFactory = NodeFactory(iDGenerator)
-        val nameComponentFactory = NameComponentFactory()
-        val nodeComponentFactory = NodeComponentFactory(iDGenerator, nameComponentFactory)
-        return NodeFactoryByPreset(nodeFactory, nodeComponentFactory)
+        _nodeFactory = NodeFactoryByPresetAssembler().assemble()
     }
 
     private fun createValidNodePreset(): NodePreset

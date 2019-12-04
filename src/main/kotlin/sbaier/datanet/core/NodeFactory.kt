@@ -10,4 +10,10 @@ class NodeFactory(private val iDGenerator: UUIDGenerator)
         val iD: UUID = iDGenerator.create()
         return Node(iD)
     }
+
+    fun create(type: String): Node
+    {
+        val iD: UUID = iDGenerator.create()
+        return Node(iD, type)
+    }
 }

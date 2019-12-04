@@ -3,12 +3,12 @@ package sbaier.datanet.core
 import sbaier.identification.UUIDGenerator
 
 class NodeComponentFactory(private val _iDGenerator: UUIDGenerator,
-                                    private val _nameComponentFactory: NameComponentFactory)
+                           private val _nameComponentFactory: NameComponentFactory)
 {
     fun create(constructArgs: NodeComponentConstructArgs): NodeComponent
     {
         val iD = _iDGenerator.create()
-        when(constructArgs.type)
+        when (constructArgs.type)
         {
             NodeComponentType.Name -> return _nameComponentFactory.create(iD,
                     constructArgs as NameComponentConstructArgs)

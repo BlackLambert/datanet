@@ -1,26 +1,45 @@
 package sbaier.datanet.core
 
-import sbaier.identification.UUIDGenerator
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertNotSame
+import kotlin.test.*
 
 class NodeFactoryTest
 {
+    private val type = "Type"
     private lateinit var factory: NodeFactory
 
     @BeforeTest
     fun setup()
     {
-        val iDGenerator = UUIDGenerator()
-        factory = NodeFactory(iDGenerator)
+        factory = NodeFactoryAssembler().assemble()
     }
 
     @Test
     fun create_DifferentNodesWithDifferentID()
     {
-        var firstNode = factory.create()
-        var secondNode = factory.create()
+        val firstNode = factory.create()
+        val secondNode = factory.create()
         assertNotSame(firstNode.iD, secondNode.iD)
     }
+
+    @Test
+    fun create_TypeCorrect()
+    {
+        val node = factory.create()
+        assertEquals(node.type, "Custom")
+    }
+
+    @Test
+    fun create_ComponentsEmpty()
+    {
+        val node = factory.create()
+        assertTrue(node.componentsCount == 0)
+    }
+
+    @Test
+    fun create_TypeArg_TypeCorrect()
+    {
+        val node = factory.create(type)
+        assertEquals(node.type, type)
+    }
+
 }

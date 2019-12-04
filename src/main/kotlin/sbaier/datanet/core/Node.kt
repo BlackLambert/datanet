@@ -5,11 +5,13 @@ import sbaier.eventhandling.CollectionChangedEvent
 import sbaier.eventhandling.CollectionChangedEventArgs
 import java.util.UUID
 
-open class Node(val iD:UUID)
+open class Node(val iD:UUID, val type: String = "Custom")
 {
     private val _components: MutableSet<NodeComponent> = mutableSetOf()
     private  val _immutableComponents: Set<NodeComponent>
         get() {return _components}
+    val componentsCount: Int
+        get() {return _components.count()}
     val componentsChangedEvent: CollectionChangedEvent<Node, NodeComponent> = CollectionChangedEvent()
 
     fun add(component: NodeComponent)

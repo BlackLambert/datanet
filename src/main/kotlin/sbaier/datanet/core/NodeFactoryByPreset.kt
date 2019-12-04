@@ -5,7 +5,7 @@ class NodeFactoryByPreset(private val nodeFactory: NodeFactory,
 {
     fun create(preset: NodePreset): Node
     {
-        val result = nodeFactory.create()
+        val result = nodeFactory.create(preset.name)
         for (componentType in preset.componentTypes)
         {
             if (!preset.componentConstructArgs.containsKey(componentType))
