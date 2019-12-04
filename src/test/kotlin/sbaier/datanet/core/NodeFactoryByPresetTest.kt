@@ -1,6 +1,5 @@
 package sbaier.datanet.core
 
-import sbaier.identification.UUIDGenerator
 import java.lang.IllegalArgumentException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -28,7 +27,7 @@ class NodeFactoryByPresetTest
 
     private fun createValidNodePreset(): NodePreset
     {
-        val validArgs: NodeComponentConstructArgs = NameComponentConstructArgs(_namePropertyName, _nameValue)
+        val validArgs: NodeComponentConstructArgs = LabelComponentConstructArgs(_namePropertyName, _nameValue)
         return NodePreset(_presetName, listOf(NodeComponentType.Name), hashMapOf(NodeComponentType.Name to validArgs))
     }
 
@@ -47,7 +46,7 @@ class NodeFactoryByPresetTest
     fun create_outputEqualsInput()
     {
         val node = _nodeFactory.create(_validPreset)
-        val component:NameComponent = node.get(NodeComponentType.Name).first() as NameComponent
+        val component:LabelComponent = node.get(NodeComponentType.Name).first() as LabelComponent
         assertEquals(component.type, NodeComponentType.Name)
         assertEquals(component.namePropertyName, _namePropertyName)
         assertEquals(component.nameValue, _nameValue)

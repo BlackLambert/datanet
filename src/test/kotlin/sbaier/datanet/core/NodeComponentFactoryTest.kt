@@ -1,6 +1,5 @@
 package sbaier.datanet.core
 
-import sbaier.identification.UUIDGenerator
 import java.lang.IllegalArgumentException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -19,14 +18,14 @@ class NodeComponentFactoryTest
     fun setup()
     {
         _nodeComponentFactory = NodeComponentFactoryAssembler().assemble()
-        _nameConstructArgs = NameComponentConstructArgs(_namePropertyName, _nameValue)
+        _nameConstructArgs = LabelComponentConstructArgs(_namePropertyName, _nameValue)
         _unsetConstructArgs = UnsetComponentConstructArgs()
     }
 
     @Test
     fun create_OutputEqualsInput()
     {
-        val output:NameComponent = _nodeComponentFactory.create(_nameConstructArgs) as NameComponent
+        val output:LabelComponent = _nodeComponentFactory.create(_nameConstructArgs) as LabelComponent
         assertEquals(output.type, NodeComponentType.Name)
         assertEquals(output.nameValue, _nameValue)
         assertEquals(output.namePropertyName, _namePropertyName)

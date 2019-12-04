@@ -5,25 +5,25 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class NameComponentFactoryTest
+class LabelComponentFactoryTest
 {
-    private val _namePropertyName = "Prop"
-    private val _nameValue = "Name"
-    private lateinit var _nameComponentFactory: NameComponentFactory
-    private lateinit var _constructArgs: NameComponentConstructArgs
+    private val _labelPropertyName = "Prop"
+    private val _labelValue = "Name"
+    private lateinit var _labelComponentFactory: LabelComponentFactory
+    private lateinit var _constructArgs: LabelComponentConstructArgs
 
     @BeforeTest
     fun setup()
     {
-        _nameComponentFactory = NameComponentFactory()
-        _constructArgs = NameComponentConstructArgs(_namePropertyName, _nameValue)
+        _labelComponentFactory = LabelComponentFactory()
+        _constructArgs = LabelComponentConstructArgs(_labelPropertyName, _labelValue)
     }
 
     @Test
     fun create_OutputEqualsInput()
     {
         val iD = UUID.randomUUID()
-        val component = _nameComponentFactory.create(iD, _constructArgs)
+        val component = _labelComponentFactory.create(iD, _constructArgs)
         assertEquals(component.type, NodeComponentType.Name)
         assertEquals(component.iD, iD)
         assertEquals(component.nameValue, _constructArgs.defaultName)

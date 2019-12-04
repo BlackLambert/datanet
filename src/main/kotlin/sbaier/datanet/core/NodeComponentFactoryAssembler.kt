@@ -7,7 +7,7 @@ class NodeComponentFactoryAssembler
     fun assemble(): NodeComponentFactory
     {
         val iDGenerator = UUIDGenerator()
-        val nameComponentFactory = NameComponentFactory()
+        val nameComponentFactory = LabelComponentFactory()
         return NodeComponentFactory(iDGenerator, nameComponentFactory)
     }
 }

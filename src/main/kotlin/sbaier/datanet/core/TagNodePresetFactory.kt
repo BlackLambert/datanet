@@ -9,7 +9,7 @@ class TagNodePresetFactory()
     fun create(): NodePreset
     {
         val componentTypes = listOf(NodeComponentType.Name)
-        val nameArgs: NodeComponentConstructArgs = NameComponentConstructArgs(_namePropertyName, _nameValue)
+        val nameArgs: NodeComponentConstructArgs = LabelComponentConstructArgs(_namePropertyName, _nameValue)
         val args = hashMapOf(NodeComponentType.Name to nameArgs)
         return NodePreset(_presetName, componentTypes, args)
     }

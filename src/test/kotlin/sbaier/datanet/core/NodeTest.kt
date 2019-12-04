@@ -101,9 +101,9 @@ class NodeTest
         assertTrue(_node.get(_firstComponent.type).isEmpty())
     }
 
-    private fun createNameComponent(): NameComponent
+    private fun createNameComponent(): LabelComponent
     {
-        return NameComponent(UUID.randomUUID(),"Prop", "Name")
+        return LabelComponent(UUID.randomUUID(),"Prop", "Name")
     }
 
     private fun createNode():Node
