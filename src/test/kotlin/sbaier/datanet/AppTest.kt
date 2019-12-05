@@ -11,4 +11,9 @@ class AppTest {
         val classUnderTest = App()
         assertNotNull(classUnderTest.greeting, "app should have a greeting")
     }
+    
+    @Test fun testAppNoGreeting() {
+        val classUnderTest = App()
+        assertNull(classUnderTest.greeting, "app should have a greeting")
+    }
 }
