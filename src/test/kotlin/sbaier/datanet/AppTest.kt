@@ -5,6 +5,7 @@ package sbaier.datanet
 
 import kotlin.test.Test
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 class AppTest {
     @Test fun testAppHasAGreeting() {
