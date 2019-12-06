@@ -1,7 +1,5 @@
 package sbaier.datanet.core.node
 
-import sbaier.datanet.core.node.NodeComponentType
-import sbaier.datanet.core.node.TagNodePresetFactory
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
@@ -19,13 +17,13 @@ class TagNodePresetFactoryTest
     fun create_correctComponentTypes()
     {
         val preset = _factory.create()
-        assert(preset.componentTypes.contains(NodeComponentType.Name))
+        assert(preset.componentTypes.contains(NodeComponentType.Label))
     }
 
     @Test
     fun create_argsForAllTypes()
     {
         val preset = _factory.create()
-        assert(preset.componentConstructArgs.containsKey(NodeComponentType.Name))
+        assert(preset.componentConstructArgs.containsKey(NodeComponentType.Label))
     }
 }

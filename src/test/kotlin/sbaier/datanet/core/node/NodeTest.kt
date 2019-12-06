@@ -103,7 +103,7 @@ class NodeTest
 
     private fun createNameComponent(): LabelComponent
     {
-        return LabelComponent(UUID.randomUUID(), "Prop", "Name")
+        return LabelComponent(UUID.randomUUID(), "Prop", "Label")
     }
 
     private fun createNode(): Node

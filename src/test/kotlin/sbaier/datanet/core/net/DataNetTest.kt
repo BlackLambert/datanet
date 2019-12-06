@@ -1,6 +1,8 @@
 package sbaier.datanet.core.net
 
 import sbaier.datanet.core.node.Node
+import java.io.File
+import java.nio.file.Paths
 import java.util.*
 import kotlin.test.*
 
@@ -93,6 +95,6 @@ class DataNetTest
 
     private fun createNet(): DataNet
     {
-        return DataNet(UUID.randomUUID())
+        return DataNet(Paths.get(""), UUID.randomUUID())
     }
 }

@@ -9,7 +9,7 @@ import kotlin.test.assertFailsWith
 class NodeFactoryByPresetTest
 {
     private val _namePropertyName = "PropName"
-    private val _nameValue = "Name"
+    private val _nameValue = "Label"
     private val _presetName = "Preset"
     private lateinit var _validPreset: NodePreset
     private lateinit var _missingArgsPreset: NodePreset
@@ -28,26 +28,26 @@ class NodeFactoryByPresetTest
     private fun createValidNodePreset(): NodePreset
     {
         val validArgs: NodeComponentConstructArgs = LabelComponentConstructArgs(_namePropertyName, _nameValue)
-        return NodePreset(_presetName, listOf(NodeComponentType.Name), hashMapOf(NodeComponentType.Name to validArgs))
+        return NodePreset(_presetName, listOf(NodeComponentType.Label), hashMapOf(NodeComponentType.Label to validArgs))
     }
 
     private fun createMissingArgsNodePreset(): NodePreset
     {
-        return NodePreset(_presetName, listOf(NodeComponentType.Name), hashMapOf())
+        return NodePreset(_presetName, listOf(NodeComponentType.Label), hashMapOf())
     }
 
     private fun createInvalidArgsNodePreset(): NodePreset
     {
         val invalidArgs: NodeComponentConstructArgs = UnsetComponentConstructArgs()
-        return NodePreset(_presetName, listOf(NodeComponentType.Name), hashMapOf(NodeComponentType.Name to invalidArgs))
+        return NodePreset(_presetName, listOf(NodeComponentType.Label), hashMapOf(NodeComponentType.Label to invalidArgs))
     }
 
     @Test
     fun create_outputEqualsInput()
     {
         val node = _nodeFactory.create(_validPreset)
-        val component: LabelComponent = node.get(NodeComponentType.Name).first() as LabelComponent
-        assertEquals(component.type, NodeComponentType.Name)
+        val component: LabelComponent = node.get(NodeComponentType.Label).first() as LabelComponent
+        assertEquals(component.type, NodeComponentType.Label)
         assertEquals(component.namePropertyName, _namePropertyName)
         assertEquals(component.nameValue, _nameValue)
     }

@@ -1,9 +1,12 @@
 package sbaier.datanet.core.net
 
+import sbaier.datanet.Root
 import sbaier.datanet.core.node.Node
+import java.io.File
+import java.nio.file.Path
 import java.util.UUID
 
-class DataNet(val iD: UUID)
+class DataNet(override val completePath: Path, val iD: UUID): Root
 {
     private var iDToNode: HashMap<UUID, Node> = hashMapOf()
     val nodeCount: Int
@@ -38,4 +41,7 @@ class DataNet(val iD: UUID)
     {
         return iDToNode.containsKey(node.iD)
     }
+
+    override val subPath: Path
+        get() {return completePath}
 }

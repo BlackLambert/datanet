@@ -1,6 +1,5 @@
 package sbaier.datanet.core.node
 
-import sbaier.datanet.core.node.*
 import java.lang.IllegalArgumentException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -10,7 +9,7 @@ import kotlin.test.assertFailsWith
 class NodeComponentFactoryTest
 {
     private val _namePropertyName = "Prop"
-    private val _nameValue = "Name"
+    private val _nameValue = "Label"
     private lateinit var _nodeComponentFactory: NodeComponentFactory
     private lateinit var _nameConstructArgs: NodeComponentConstructArgs
     private lateinit var _unsetConstructArgs: UnsetComponentConstructArgs
@@ -27,7 +26,7 @@ class NodeComponentFactoryTest
     fun create_OutputEqualsInput()
     {
         val output: LabelComponent = _nodeComponentFactory.create(_nameConstructArgs) as LabelComponent
-        assertEquals(output.type, NodeComponentType.Name)
+        assertEquals(output.type, NodeComponentType.Label)
         assertEquals(output.nameValue, _nameValue)
         assertEquals(output.namePropertyName, _namePropertyName)
     }

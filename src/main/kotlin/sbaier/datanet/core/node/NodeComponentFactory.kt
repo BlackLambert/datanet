@@ -10,7 +10,7 @@ class NodeComponentFactory(private val _iDGenerator: UUIDGenerator,
         val iD = _iDGenerator.create()
         when (constructArgs.type)
         {
-            NodeComponentType.Name -> return _labelComponentFactory.create(iD,
+            NodeComponentType.Label -> return _labelComponentFactory.create(iD,
                     constructArgs as LabelComponentConstructArgs)
             NodeComponentType.Unset -> throw IllegalArgumentException(
                     "Creating a component of default type ${constructArgs.type} is not possible}")
