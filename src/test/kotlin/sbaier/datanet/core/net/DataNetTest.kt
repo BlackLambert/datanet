@@ -95,6 +95,6 @@ class DataNetTest
 
     private fun createNet(): DataNet
     {
-        return DataNet(Paths.get(""), UUID.randomUUID())
+        return DataNet( UUID.randomUUID())
     }
 }

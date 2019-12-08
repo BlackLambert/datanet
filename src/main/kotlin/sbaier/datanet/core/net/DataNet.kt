@@ -6,7 +6,7 @@ import java.io.File
 import java.nio.file.Path
 import java.util.UUID
 
-class DataNet(override val completePath: Path, val iD: UUID): Root
+class DataNet(val iD: UUID)
 {
     private var iDToNode: HashMap<UUID, Node> = hashMapOf()
     val nodeCount: Int
@@ -41,7 +41,4 @@ class DataNet(override val completePath: Path, val iD: UUID): Root
     {
         return iDToNode.containsKey(node.iD)
     }
-
-    override val subPath: Path
-        get() {return completePath}
 }
